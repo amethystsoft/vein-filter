@@ -41,7 +41,8 @@ let package = Package(
         .testTarget(
             name: "VeinFilterMacroTests",
             dependencies: [
-                "VeinFilterMacros"
+                "VeinFilterMacros",
+                "VeinFilter"
             ]
         )
     ],
