@@ -1,0 +1,74 @@
+//===----------------------------------------------------------------------===//
+//
+// This source file is part of the Swift.org open source project
+//
+// Copyright (c) 2022-2023 Apple Inc. and the Swift project authors
+// Licensed under Apache License v2.0 with Runtime Library Exception
+//
+// See https://swift.org/LICENSE.txt for license information
+// See https://swift.org/CONTRIBUTORS.txt for the list of Swift project authors
+//
+//===----------------------------------------------------------------------===//
+
+extension FilterExpressions {
+    public struct Conditional<
+        Test : FilterExpression,
+        If : FilterExpression,
+        Else : FilterExpression
+    > : FilterExpression
+    where
+    Test.Output == Bool,
+    If.Output == Else.Output
+    {
+        public typealias Output = If.Output
+        
+        public let test : Test
+        public let trueBranch : If
+        public let falseBranch : Else
+        
+        public init(test: Test, trueBranch: If, falseBranch: Else) {
+            self.test = test
+            self.trueBranch = trueBranch
+            self.falseBranch = falseBranch
+        }
+        
+        public func evaluate(_ bindings: FilterBindings) throws -> If.Output {
+            let result = try test.evaluate(bindings)
+            if result {
+                return try trueBranch.evaluate(bindings)
+            } else {
+                return try falseBranch.evaluate(bindings)
+            }
+        }
+    }
+    
+    public static func build_Conditional<Test, If, Else>(_ test: Test, _ trueBranch: If, _ falseBranch: Else) -> Conditional<Test, If, Else> {
+        Conditional(test: test, trueBranch: trueBranch, falseBranch: falseBranch)
+    }
+}
+
+extension FilterExpressions.Conditional : CustomStringConvertible {
+    public var description: String {
+        "Conditional(test: \(test), trueBranch: \(trueBranch), falseBranch: \(falseBranch))"
+    }
+}
+
+extension FilterExpressions.Conditional : StandardFilterExpression where Test : StandardFilterExpression, If : StandardFilterExpression, Else : StandardFilterExpression {}
+
+extension FilterExpressions.Conditional : Codable where Test : Codable, If : Codable, Else : Codable {
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.unkeyedContainer()
+        try container.encode(test)
+        try container.encode(trueBranch)
+        try container.encode(falseBranch)
+    }
+    
+    public init(from decoder: Decoder) throws {
+        var container = try decoder.unkeyedContainer()
+        test = try container.decode(Test.self)
+        trueBranch = try container.decode(If.self)
+        falseBranch = try container.decode(Else.self)
+    }
+}
+
+extension FilterExpressions.Conditional : Sendable where Test : Sendable, If : Sendable, Else : Sendable {}
