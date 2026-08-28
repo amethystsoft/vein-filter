@@ -3,6 +3,7 @@ name: Swift Test (Ubuntu 24.04)
 on:
   push:
     branches: [main]
+  workflow_dispatch:
   pull_request:
     branches: [main]
 
