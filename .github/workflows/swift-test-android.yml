@@ -1,10 +1,10 @@
 name: Swift Test (Android)
 on:
   push:
-    branches: [main]
+    branches: [master]
   workflow_dispatch:
   pull_request:
-    branches: [main]
+    branches: [master]
 
 permissions:
   contents: read
