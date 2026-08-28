@@ -2,10 +2,10 @@ name: Swift Windows CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   workflow_dispatch:
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
 
 permissions:
   contents: read
