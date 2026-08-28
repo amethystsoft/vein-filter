@@ -524,7 +524,6 @@ private struct FilterMacroFunctionCallTests {
                 inputA.caseInsensitiveCompare("foo")
             }
             """,
-            /*
             """
             VeinFilter.Filter1<String>({ inputA in
                 FilterExpressions.build_caseInsensitiveCompare(
@@ -532,8 +531,8 @@ private struct FilterMacroFunctionCallTests {
                     FilterExpressions.build_Arg("foo")
                 )
             })
-            """*/
-            diagnostics: ["2:12: The caseInsensitiveCompare(_:) function is not supported in this filter"]
+            """
+            //diagnostics: ["2:12: The caseInsensitiveCompare(_:) function is not supported in this filter"]
         )
     }
     

@@ -9,7 +9,9 @@
 // See https://swift.org/CONTRIBUTORS.txt for the list of Swift project authors
 //
 //===----------------------------------------------------------------------===//
-/*
+
+import Foundation
+
 extension FilterExpressions {
     public struct StringCaseInsensitiveCompare<
         Root : FilterExpression,
@@ -62,4 +64,4 @@ extension FilterExpressions.StringCaseInsensitiveCompare : Codable where Root : 
 }
 
 extension FilterExpressions.StringCaseInsensitiveCompare : Sendable where Root : Sendable, Other : Sendable {}
-*/
+

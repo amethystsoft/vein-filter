@@ -107,4 +107,5 @@ extension FilterExpressions.StringContainsRegex : Codable where Subject : Codabl
 extension FilterExpressions.StringContainsRegex : StandardFilterExpression where Subject : StandardFilterExpression, Regex : StandardFilterExpression {}
 
 #endif
+
 */

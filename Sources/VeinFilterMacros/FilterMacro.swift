@@ -31,7 +31,7 @@ private let _knownSupportedFunctions: Set<FunctionStructure> = [
     FunctionStructure("max", arguments: []),
     FunctionStructure("localizedStandardContains", arguments: [.unlabeled]),
     FunctionStructure("localizedCompare", arguments: [.unlabeled]),
-    //FunctionStructure("caseInsensitiveCompare", arguments: [.unlabeled])
+    FunctionStructure("caseInsensitiveCompare", arguments: [.unlabeled])
 ]
 
 private var knownSupportedFunctions: Set<FunctionStructure> {

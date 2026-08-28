@@ -356,9 +356,7 @@ extension FilterExpressions.ExpressionEvaluate : DebugStringConvertibleFilterExp
         return "\(expression.debugString(state: &state)).evaluate(\(inputStrings.joined(separator: ", ")))"
     }
 }*/
-
-#if FOUNDATION_FRAMEWORK
-
+/*
 extension FilterExpressions.FilterEvaluate : DebugStringConvertibleFilterExpression where Condition : DebugStringConvertibleFilterExpression, repeat each Input : DebugStringConvertibleFilterExpression {
     package func debugString(state: inout DebugStringConversionState) -> String {
         var inputStrings: [String] = []
@@ -366,14 +364,13 @@ extension FilterExpressions.FilterEvaluate : DebugStringConvertibleFilterExpress
         return "\(Filter.debugString(state: &state)).evaluate(\(inputStrings.joined(separator: ", ")))"
     }
 }
+ */
 
 extension FilterExpressions.StringCaseInsensitiveCompare : DebugStringConvertibleFilterExpression where Root : DebugStringConvertibleFilterExpression, Other : DebugStringConvertibleFilterExpression {
     package func debugString(state: inout DebugStringConversionState) -> String {
         "\(root.debugString(state: &state)).caseInsensitiveCompare(\(other.debugString(state: &state)))"
     }
 }
-
-#endif
 
 private func createDescription<each Input, Output>(variable: repeat FilterExpressions.Variable<each Input>, expression: some StandardFilterExpression, typeName: String, outputType: Output.Type = Void.self) -> String {
     var variableIDs: [FilterExpressions.VariableID] = []

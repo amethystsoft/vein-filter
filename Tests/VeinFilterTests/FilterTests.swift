@@ -255,7 +255,7 @@ private struct FilterTests {
         #expect(try !predicate.evaluate(Object(a: 3, b: "", c: 0.0, d: 0, e: "c", f: true, g: [1, 3])))
         #expect(try predicate.evaluate(Object(a: 3, b: "", c: 0.0, d: 0, e: "c", f: true, g: [2, 3])))
     }
-    /*
+    
     @Test func caseInsensitiveCompare() throws {
         let equal = ComparisonResult.orderedSame
         let predicate = #Filter<Object> {
@@ -263,7 +263,7 @@ private struct FilterTests {
         }
         #expect(try predicate.evaluate(Object(a: 3, b: "abc", c: 0.0, d: 0, e: "c", f: true, g: [1, 3])))
         #expect(try !predicate.evaluate(Object(a: 3, b: "def", c: 0.0, d: 0, e: "c", f: true, g: [1, 3])))
-    }*/
+    }
     
     @Test func buildDynamically() throws {
         func _build(_ equal: Bool) -> Filter1<Int> {
