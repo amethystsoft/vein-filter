@@ -10,6 +10,9 @@
 //
 //===----------------------------------------------------------------------===//
 
+// Modified by Mia Koring as amethystsoft in 2026 for vein-filter:
+// Adjusted to work with older Apple OS versions.
+
 public struct Filter1<Input1> : Sendable {
     public let expression : any StandardFilterExpression<Bool>
     public let variable: (FilterExpressions.Variable<Input1>)

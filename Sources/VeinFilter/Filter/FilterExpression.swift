@@ -10,6 +10,9 @@
 //
 //===----------------------------------------------------------------------===//
 
+// Modified by Mia Koring as amethystsoft in 2026 for vein-filter:
+// Adjusted to work with older Apple OS versions.
+
 #if canImport(Synchronization) && (!canImport(Darwin) || FOUNDATION_FRAMEWORK)
 internal import Synchronization
 #endif

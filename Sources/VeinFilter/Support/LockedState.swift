@@ -10,6 +10,9 @@
 //
 //===----------------------------------------------------------------------===//
 
+// Modified by Mia Koring as amethystsoft in 2026 for vein-filter:
+// Adjusted to work with older Apple OS versions.
+
 #if canImport(os)
 internal import os
 #if FOUNDATION_FRAMEWORK && canImport(C.os.lock)

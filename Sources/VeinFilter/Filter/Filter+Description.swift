@@ -9,6 +9,10 @@
 // See https://swift.org/CONTRIBUTORS.txt for the list of Swift project authors
 //
 //===----------------------------------------------------------------------===//
+
+// Modified by Mia Koring as amethystsoft in 2026 for vein-filter:
+// Adjusted to work with older Apple OS versions.
+
 import Foundation
 
 package struct DebugStringConversionState {
@@ -340,31 +344,6 @@ extension FilterExpressions.Filter : DebugStringConvertibleFilterExpression wher
             """
     }
 }
-/*
-#if compiler(>=5.11)
-extension FilterExpressions.StringContainsRegex : DebugStringConvertibleFilterExpression where Subject : DebugStringConvertibleFilterExpression, Regex : DebugStringConvertibleFilterExpression {
-    package func debugString(state: inout DebugStringConversionState) -> String {
-        "\(subject.debugString(state: &state)).contains(\(subject.debugString(state: &state)))"
-    }
-}
-#endif*/
-/*
-extension FilterExpressions.ExpressionEvaluate : DebugStringConvertibleFilterExpression where Transformation : DebugStringConvertibleFilterExpression, repeat each Input : DebugStringConvertibleFilterExpression {
-    package func debugString(state: inout DebugStringConversionState) -> String {
-        var inputStrings: [String] = []
-        repeat inputStrings.append((each input).debugString(state: &state))
-        return "\(expression.debugString(state: &state)).evaluate(\(inputStrings.joined(separator: ", ")))"
-    }
-}*/
-/*
-extension FilterExpressions.FilterEvaluate : DebugStringConvertibleFilterExpression where Condition : DebugStringConvertibleFilterExpression, repeat each Input : DebugStringConvertibleFilterExpression {
-    package func debugString(state: inout DebugStringConversionState) -> String {
-        var inputStrings: [String] = []
-        repeat inputStrings.append((each input).debugString(state: &state))
-        return "\(Filter.debugString(state: &state)).evaluate(\(inputStrings.joined(separator: ", ")))"
-    }
-}
- */
 
 extension FilterExpressions.StringCaseInsensitiveCompare : DebugStringConvertibleFilterExpression where Root : DebugStringConvertibleFilterExpression, Other : DebugStringConvertibleFilterExpression {
     package func debugString(state: inout DebugStringConversionState) -> String {
@@ -407,12 +386,6 @@ extension Filter1 : CustomStringConvertible {
         createDescription(variable: variable, expression: expression, typeName: "Filter")
     }
 }
-/*
-extension Expression : CustomStringConvertible {
-    public var description: String {
-        createDescription(variable: repeat each variable, expression: expression, typeName: "Expression", outputType: Output.self)
-    }
-}*/
 
 extension Filter1 : CustomDebugStringConvertible {
     public var debugDescription: String {
@@ -421,12 +394,3 @@ extension Filter1 : CustomDebugStringConvertible {
         return "\(_typeName(Self.self))(variable: (\(variableDesc.joined(separator: ", "))), expression: \(expression))"
     }
 }
-/*
-extension Expression : CustomDebugStringConvertible {
-    public var debugDescription: String {
-        var variableDesc: [String] = []
-        repeat variableDesc.append((each variable).description)
-        return "\(_typeName(Self.self))(variable: (\(variableDesc.joined(separator: ", "))), expression: \(expression))"
-    }
-}
-*/

@@ -10,6 +10,9 @@
 //
 //===----------------------------------------------------------------------===//
 
+// Modified by Mia Koring as amethystsoft in 2026 for vein-filter:
+// Adjusted to work with older Apple OS versions.
+
 extension UInt32 {
     private static var KEYPATH_HEADER_BUFFER_SIZE_MASK: UInt32 { 0x00FF_FFFF }
     

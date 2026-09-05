@@ -10,6 +10,9 @@
 //
 //===----------------------------------------------------------------------===//
 
+// Modified by Mia Koring as amethystsoft in 2026 for vein-filter:
+// Adjusted to work with older Apple OS versions.
+
 public struct FilterBindings {
     // Store as a values as an array instead of a dictionary (since it is almost always very few elements, this reduces heap allocation and hashing overhead)
     private var storage: [(id: FilterExpressions.VariableID, value: Any)]
